@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Created Ticket Daily Caculate</title>
+<link href="Common.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+
+//计算
+function MainCaculate(SourceData)
+{
+if(SourceData.replace(/(^\s*)|(\s*$)/g, "")=="" || SourceData.replace(/(^\s*)|(\s*$)/g, "")==null)
+{
+alert("No Data Imported!");
+return;
+}
+myArr=new Array(24);
+myArr[0]="Meng, Cai Ying";
+myArr[1]="Hui Min, Li";
+myArr[2]="Yang, Li";
+myArr[3]="Liu, Yuan Jing";
+myArr[4]="Chen, Qiang";
+myArr[5]="Jiang, Zhi Min";
+myArr[6]="Jin, Hong Jun";
+myArr[7]="Yang, Wen qing";
+myArr[8]="Wang, Hai Lin";
+myArr[9]="Cheng, Xiao";
+myArr[10]="Wang, Xia";
+myArr[11]="Lei, Chuan Li";
+myArr[12]="Jin, Yin Hua";
+myArr[13]="Zhao, Jin Hua";
+myArr[14]="Yang, Yue Hua";
+myArr[15]="Piao, Zhe Xun";
+myArr[16]="Fu, Jun";
+myArr[17]="Xuan, Yin Hua";
+myArr[18]="Cui, Zhe Feng";
+myArr[19]="Zhao, Jia";
+myArr[20]="Liu, Yang";
+myArr[21]="Kuang, Lan";
+myArr[22]="Jin, Hui";
+myArr[23]="Gao, Lian Mei";
+myArr[24]="Li, Xi Ling";
+
+for(i=0;i<=myArr.length;i++)
+{
+SubCaculate(SourceData,myArr[i]);
+}
+
+}
+
+
+//计算公式 
+function SubCaculate(SourceData,MatchData)
+{
+if(SourceData.match(new RegExp(MatchData,"g"))==null)
+{
+document.getElementById("OutPutData").value+=MatchData+":"+"0"+"\n";
+return;
+}
+else
+{
+document.getElementById("OutPutData").value+=MatchData+":"+SourceData.match(new RegExp(MatchData,"g")).length+"\n";
+}
+
+}
+
+</script>
+
+
+</head>
+
+<body onload="setMyDate()">
+
+<textarea id="SourceData" rows="20" cols="20" style="float:left;" ></textarea>
+<input type="button"  id="Submit"  onclick="MainCaculate(SourceData.value)" value="开始计算" />
+<textarea id="OutPutData" rows="20" cols="20" ></textarea>
+</body>
+</html>

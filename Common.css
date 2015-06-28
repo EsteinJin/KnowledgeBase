@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { 
+font: normal 11px  "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; 
+color: #4f6b72; background: #E6EAE9; 
+} 
+#ITCoordinatorColumn{border:1px solid #333399; width:30%; height:200px; float:left; margin-left:50px;}
+#PAColumn{ border:1px solid #999999; width:30%; height:200px; float:left; margin-left:5px;}
+#TrainerColumn{border:1px solid #999999; width:30%; height:200px; float:left; margin-left:5px;}
+th { 
+font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; 
+color: #4f6b72; 
+border-right: 1px solid #C1DAD7; 
+border-bottom: 1px solid #C1DAD7; 
+border-top: 1px solid #C1DAD7; 
+letter-spacing: 2px; 
+text-transform: uppercase; 
+text-align: left; 
+padding: 6px 6px 6px 12px; 
+background: #CAE8EA no-repeat; position:fixed;
+} 
+td { 
+border-right: 1px solid #C1DAD7; 
+border-bottom: 1px solid #C1DAD7; 
+background: #fff; 
+font-size:11px; 
+padding: 6px 6px 6px 12px; 
+color: #4f6b72; 
+} 
+tr{height:10px;}
+.Descritpion{ display:none;}
+#Contents{ overflow:scroll; height:500px; width:1300px;}

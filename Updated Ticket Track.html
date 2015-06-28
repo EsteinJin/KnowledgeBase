@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Updated Ticket Daily Caculate</title>
+<link href="Common.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+
+function setMyDate()
+{
+var newDate= new Date();
+var YearChar=newDate.getYear().toString();
+var month=new Array(12)
+month[0]="1"
+month[1]="2"
+month[2]="3"
+month[3]="4"
+month[4]="5"
+month[5]="6"
+month[6]="7"
+month[7]="8"
+month[8]="9"
+month[9]="10"
+month[10]="11"
+month[11]="12"
+var myMonth=month[newDate.getMonth()]
+document.getElementById("SourceDate").value=newDate.getDate().toString()+"."+myMonth.toString()+"."+YearChar.charAt(2).toString()+YearChar.charAt(3).toString()
+}
+//计算
+function MainCaculate(SourceData)
+{
+
+//.replace(/(^\s*)|(\s*$)/g, "");--Trim Words.
+if(SourceData.replace(/(^\s*)|(\s*$)/g, "")=="" || SourceData.replace(/(^\s*)|(\s*$)/g, "")==null)
+{
+alert("No Data Imported!");
+return;
+}
+
+
+var StrName="";
+myArr=new Array(24);
+myArr[0]="Meng, Cai Ying";
+myArr[1]="Hui Min, Li";
+myArr[2]="Yang, Li";
+myArr[3]="Liu, Yuan Jing";
+myArr[4]="Chen, Qiang";
+myArr[5]="Jiang, Zhi Min";
+myArr[6]="Jin, Hong Jun";
+myArr[7]="Yang, Wen qing";
+myArr[8]="Wang, Hai Lin";
+myArr[9]="Cheng, Xiao";
+myArr[10]="Wang, Xia";
+myArr[11]="Lei, Chuan Li";
+myArr[12]="Jin, Yin Hua";
+myArr[13]="Zhao, Jin Hua";
+myArr[14]="Yang, Yue Hua";
+myArr[15]="Piao, Zhe Xun";
+myArr[16]="Fu, Jun";
+myArr[17]="Xuan, Yin Hua";
+myArr[18]="Cui, Zhe Feng";
+myArr[19]="Zhao, Jia";
+myArr[20]="Liu, Yang";
+myArr[21]="Kuang, Lan";
+myArr[22]="Jin, Hui";
+myArr[23]="Gao, Lian Mei";
+myArr[24]="Li, Xi Ling";
+
+for(i=0;i<=myArr.length;i++)
+{
+SubCaculate(SourceData,myArr[i]);
+}
+
+}
+
+//计算公式 
+function SubCaculate(SourceData,strName)
+{
+var strData1=document.getElementById("SourceDate").value;
+var strData2="\\s\\d\\d\\W\\d\\d\\W\\d\\d\\s\\W[^0-9][^0-9][^0-9]\\s[^0-9][0-9][^0-9][0-9][0-9][^0-9]\\s";
+var strData3=strName;
+var newString=strData1+strData2+strData3;
+
+if(SourceData.match(new RegExp(newString,"g"))==null)
+{
+document.getElementById("OutPutData").value+=strData3+":"+"0"+"\n";
+return;
+}
+else
+{
+document.getElementById("OutPutData").value+=strData3+":"+SourceData.match(new RegExp(newString,"g")).length+"\n";
+
+return;
+}
+}
+
+
+</script>
+
+
+</head>
+
+<body onload="setMyDate()">
+
+<input type="text" id="SourceDate" value="" style="float:left;" />
+<textarea id="SourceData" rows="20" cols="20" style="float:left;" ></textarea>
+<input type="button"  id="Submit"  onclick="MainCaculate(SourceData.value)" value="开始计算" />
+<textarea id="OutPutData" rows="20" cols="20" ></textarea>
+</body>
+</html>
